@@ -145,7 +145,7 @@ body {
 <div class="message__has-scroll">
   <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
     <div ng-click="showMessageAlert(message.message)">
-      {{ message.message.length > 15 ? (message.message | limitTo: 10) + '...' : message.message }}
+      {{ message.message.length > 10 ? (message.message | limitTo: 10) + '...' : message.message }}
     </div>
   </span>
 </div>
@@ -166,7 +166,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://veravart-mymagti-default-rtdb.firebaseio.com"
+    "https://say-hello-to-world-755dc.firebaseio.com/messages"
   );
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
@@ -189,25 +189,18 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
   $scope.getColor = getColor();
 
   $scope.messages = $firebaseArray(ref);
-  $scope.addMessage = (event) => {
-  event.preventDefault();
-  let messageLength = Math.floor(Math.random() * (30 - 15 + 1)) + 15;
-  let randomMessage = generateRandomMessage(messageLength);
-  $scope.messages.$add({
-    message: randomMessage,
-    color: $scope.getColor()
-  });
-  $scope.hide = true;
-};
+ $scope.addMessage = (event) => {
+    event.preventDefault();
+    $scope.messages.$add({
+      message: $scope.message,
+      color: $scope.getColor
+    });
+    $scope.message = "";
+    $scope.hide = true;
+    $scope.getColor = getColor();
+  };
 
-function generateRandomMessage(length) {
-  let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
+
 
   $scope.userMessageInput = ""; // Initialize the user input field
 
