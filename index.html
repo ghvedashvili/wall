@@ -28,7 +28,7 @@ html {
 
 .message .message__has-scroll, body,
 html {
-    margin-top:70px;
+margin-top:70px;
   justify-content: center;
   align-items: center;
 }
@@ -134,7 +134,7 @@ body {
     transform: scale(1);
   }
 }
-      /* Media query for mobile screens */
+/* Media query for mobile screens */
 @media (max-width: 768px) {
   .message {
     width: 100%; /* Full width on smaller screens */
@@ -195,7 +195,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://veravart-mymagti-default-rtdb.firebaseio.com"
+    "https://say-hello-to-world-755dc.firebaseio.com/messages"
   );
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
