@@ -164,7 +164,7 @@ body {
   }
 }
       * {
-  -webkit-text-size-adjust: 180%;
+  -webkit-text-size-adjust: 150%;
 }
   </style>
 </head>
@@ -199,7 +199,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://veravart-mymagti-default-rtdb.firebaseio.com"
+    "https://say-hello-to-world-755dc.firebaseio.com/messages"
   );
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
