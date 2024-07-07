@@ -134,6 +134,34 @@ body {
     transform: scale(1);
   }
 }
+      /* Media query for mobile screens */
+@media (max-width: 768px) {
+  .message {
+    width: 100%; /* Full width on smaller screens */
+    padding: 10px; /* Add padding for better spacing */
+  }
+
+  .message__form-write__text {
+    font-size: 14px; /* Adjust font size for readability */
+  }
+
+  .btn-primary {
+    width: 100%; /* Full width for button */
+    margin-top: 10px; /* Add margin for spacing */
+  }
+
+  .message__form-write__close {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+  }
+}
   </style>
 </head>
 <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
