@@ -191,7 +191,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://ht-wall-default-rtdb.firebaseio.com/"
+    "https://say-hello-to-world-755dc.firebaseio.com/messages"
   );
   
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
