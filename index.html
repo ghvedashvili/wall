@@ -169,11 +169,12 @@ body {
   </form>
 <div class="message__has-scroll">
   <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.fontColor }}">
-    <div ng-click="showMessageAlert(message.message)">
-      {{ message.message.length > 10 ? (message.message | limitTo: 10) + '...' : message.message }}
+    <div ng-click="showMessageAlert(message.message, message.timestamp)">
+      {{ getTruncatedMessage(message.message) }}
     </div>
   </span>
 </div>
+
 
   <div class="message__total">
     {{ messages.length }}
@@ -193,6 +194,7 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
     "https://ht-wall-default-rtdb.firebaseio.com/"
   );
+   const getRandomLength = () => random(5, 30);
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
     let colors = [
@@ -238,6 +240,10 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
     const formattedTimestamp = new Date(timestamp).toLocaleString();
     const alertMessage = `Message: ${messageText}\n\nDate: ${timestamp}`;
     alert(alertMessage);
+  };
+  $scope.getTruncatedMessage = function (messageText) {
+    const limit = getRandomLength();
+    return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
   };
 });
 
