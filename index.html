@@ -35,6 +35,7 @@ margin-top:70px;
 
 .message .message__has-scroll {
   flex-wrap: wrap;
+
 }
 
 [ng-cloak] {
@@ -53,7 +54,7 @@ body {
 
 .message .message__has-scroll {
   height: 100vh;
-  padding: 0.1em 0.1em;
+  padding: 1em 2em;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -167,7 +168,7 @@ body {
      
   </form>
 <div class="message__has-scroll">
-  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
+  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.fontColor }}">
     <div ng-click="showMessageAlert(message.message)">
       {{ message.message.length > 10 ? (message.message | limitTo: 10) + '...' : message.message }}
     </div>
@@ -190,7 +191,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://say-hello-to-world-755dc.firebaseio.com/messages"
+    "https://ht-wall-default-rtdb.firebaseio.com/"
   );
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
@@ -217,7 +218,7 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
     event.preventDefault();
     $scope.messages.$add({
       message: $scope.message,
-      color: $scope.getColor
+      fontColor: $scope.getColor
     });
     $scope.message = "";
     $scope.hide = true;
