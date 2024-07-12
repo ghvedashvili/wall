@@ -176,7 +176,9 @@ body {
      
   </form>
 <div class="message__has-scroll">
-  <span ng-repeat="message in messages | reverse" class="message__item"  color: {{ message.color }}">
+  <span ng-repeat="message in messages| reverse"
+          class="message__item"
+          style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
     <div ng-click="showMessageAlert(message.message)">
       {{ message.message.length > 10 ? (message.message | limitTo: 10) + '...' : message.message }}
     </div>
