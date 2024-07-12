@@ -191,7 +191,7 @@ app.filter("reverse", function () {
 
 app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
-    "https://veravart-mymagti-default-rtdb.firebaseio.com"
+    "https://ht-wall-default-rtdb.firebaseio.com/"
   );
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
