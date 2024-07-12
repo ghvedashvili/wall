@@ -194,7 +194,7 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
   const ref = new Firebase(
     "https://ht-wall-default-rtdb.firebaseio.com/"
   );
-   const getRandomLength = () => random(5, 15);
+   const getRandomLength = () => random(5, 10);
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const getColor = () => {
     let colors = [
