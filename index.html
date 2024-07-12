@@ -54,7 +54,7 @@ body {
 
 .message .message__has-scroll {
   height: 100vh;
-  padding: 1em 2em;
+  padding: 0.5em 0em;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -156,7 +156,7 @@ body {
   }
 }
       * {
-  -webkit-text-size-adjust: 140%;
+  -webkit-text-size-adjust: 100%;
 }
   </style>
 </head>
@@ -168,7 +168,7 @@ body {
      
   </form>
 <div class="message__has-scroll">
-  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.fontColor }}">
+  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
     <div ng-click="showMessageAlert(message.message)">
       {{ message.message.length > 20 ? (message.message | limitTo: 10) + '...' : message.message }}
     </div>
@@ -234,7 +234,7 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
     messageText,
     timestamp,
     bgColor,
-    fontColor
+    Color
   ) {
     const formattedTimestamp = new Date(timestamp).toLocaleString();
     const alertMessage = `Message: ${messageText}\n\nDate: ${timestamp}`;
