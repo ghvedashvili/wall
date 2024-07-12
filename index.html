@@ -50,13 +50,10 @@ body {
   background: #191e38;
 }
 
-.message:hover .message__item:not(:hover) {
-  color: rgba(255, 255, 255, 0.14) !important;
-  transition: color 0s linear 3s;
-}
+
 .message .message__has-scroll {
   height: 100vh;
-/*   padding: 1em 2em; */
+  padding: 1em 2em;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -69,7 +66,7 @@ body {
   border-radius: 50%;
   color: #fff;
   font-size: 1.4em;
-/*   animation: fadeIn 1s forwards; */
+
 }
 .message .message__item {
   padding: 2px;
@@ -85,14 +82,8 @@ body {
   padding: 0px 8px;
   border-radius: 50px;
 }
-.message .message__item:hover {
-  z-index: 1;
-}
-.message .message__item:hover div {
-  background-color: #090b15;
-  transform: scale(1) rotateX(360deg);
-  transition: all 0.4s ease-in-out;
-}
+
+
 .message .message__form-write {
   position: absolute;
   left: 0;
@@ -164,7 +155,7 @@ body {
   }
 }
       * {
-  -webkit-text-size-adjust: 190%;
+  -webkit-text-size-adjust: 160%;
 }
   </style>
 </head>
@@ -176,9 +167,7 @@ body {
      
   </form>
 <div class="message__has-scroll">
-  <span ng-repeat="message in messages| reverse"
-          class="message__item"
-          style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
+  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
     <div ng-click="showMessageAlert(message.message)">
       {{ message.message.length > 10 ? (message.message | limitTo: 10) + '...' : message.message }}
     </div>
