@@ -60,14 +60,16 @@ body {
 }
 .message .message__total {
   position: absolute;
-  right: 50px;
-  top: 10px;
+  bottom: 10px;
+  right:30px;
   background-color: #0c0f1c;
   padding: 0.9em;
-  border-radius: 50%;
+  border-radius: 50px;
   color: #fff;
-  font-size: 1.4em;
-
+  font-size: 1.3em;
+  animation: fadeIn 1s forwards;
+  text-align:center;
+    background-color: #0c0f1c;
 }
 .message .message__item {
   padding: 2px;
@@ -94,6 +96,7 @@ body {
   width: 350px;
   height: 80px;
   z-index: 2;
+  
 }
 .message .message__form-write .message__form-write__text {
   width: 100%;
@@ -103,6 +106,7 @@ body {
   border: 0 none;
   padding: 0 30px;
   transition: background-color 0.2s linear;
+    font-size: 1.3em;
 }
 .message .message__form-write .message__form-write__text:focus, .message .message__form-write .message__form-write__text:hover {
   background-color: black;
@@ -167,6 +171,7 @@ body {
     <button class="message__form-write__close" type="button" ng-click="hide = true">x</button>
      
   </form>
+  
 <div class="message__has-scroll">
   <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
     <div ng-click="showMessageAlert(message.message)">
@@ -176,7 +181,7 @@ body {
 </div>
 
   <div class="message__total">
-    {{ "We have total"+messages.length+"emotion" }}
+    {{ "We have total "+messages.length+" emotion" }}
   </div>
 </div>
   <script>
@@ -219,7 +224,7 @@ app.controller("ctrl", function ($scope, $firebaseArray) {
     event.preventDefault();
     $scope.messages.$add({
       message: $scope.message,
-      fontColor: $scope.getColor
+      color: $scope.getColor
     });
     $scope.message = "";
     $scope.hide = true;
