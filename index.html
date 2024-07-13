@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+<head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
@@ -6,249 +8,266 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>wall</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Caveat+Brush");
+        .message .message__form-write .message__form-write__close, .message .message__form-write .message__form-write__text, body {
+            font-size: 18px;
+        }
 
-  <title>wall</title>
-  <style>
- @import url("https://fonts.googleapis.com/css?family=Caveat+Brush");
-.message .message__form-write .message__form-write__close, .message .message__form-write .message__form-write__text, body {
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
 
-  font-size: 18px;
-}
+        .message .message__has-scroll, body,
+        html {
+            display: flex;
+        }
 
-body,
-html {
-  width: 100%;
-  height: 100%;
-}
+        .message .message__has-scroll, body,
+        html {
+            margin-top: 70px;
+            justify-content: center;
+            align-items: center;
+        }
 
-.message .message__has-scroll, body,
-html {
-  display: flex;
-}
+        .message .message__has-scroll {
+            flex-wrap: wrap;
+        }
 
-.message .message__has-scroll, body,
-html {
-margin-top:70px;
-  justify-content: center;
-  align-items: center;
-}
+        [ng-cloak] {
+            display: none !important;
+        }
 
-.message .message__has-scroll {
-  flex-wrap: wrap;
+        * {
+            box-sizing: border-box;
+        }
 
-}
+        body {
+            margin: 0;
+            background: #191e38;
+        }
 
-[ng-cloak] {
-  display: none !important;
-}
+        .message .message__has-scroll {
+            height: 100vh;
+            padding: 0.5em 0em;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
-* {
-  box-sizing: border-box;
-}
+        .message .message__total {
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            background-color: #0c0f1c;
+            padding: 0.9em;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.3em;
+            animation: fadeIn 1s forwards;
+            text-align: center;
+            background-color: #0c0f1c;
+        }
 
-body {
-  margin: 0;
-  background: #191e38;
-}
+        .message .message__item {
+            padding: 2px;
+            margin: 0 2px;
+            cursor: default;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeIn 1s forwards;
+        }
 
+        .message .message__item div {
+            background-color: transparent;
+            transition: all 0.4s ease-in-out 0.2s;
+            padding: 0px 8px;
+            border-radius: 50px;
+        }
 
-.message .message__has-scroll {
-  height: 100vh;
-  padding: 0.5em 0em;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-.message .message__total {
-  position: absolute;
-  bottom: 10px;
-  right:30px;
-  background-color: #0c0f1c;
-  padding: 0.9em;
-  border-radius: 50px;
-  color: #fff;
-  font-size: 1.3em;
-  animation: fadeIn 1s forwards;
-  text-align:center;
-    background-color: #0c0f1c;
-}
-.message .message__item {
-  padding: 2px;
-  margin: 0 2px;
-  cursor: default;
-  opacity: 0;
-  transform: scale(0.5);
-  animation: fadeIn 1s forwards;
-}
-.message .message__item div {
-  background-color: transparent;
-  transition: all 0.4s ease-in-out 0.2s;
-  padding: 0px 8px;
-  border-radius: 50px;
-}
+        .message .message__form-write {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 10px;
+            margin: auto;
+            width: 350px;
+            height: 80px;
+            z-index: 2;
+        }
 
+        .message .message__form-write .message__form-write__text {
+            width: 100%;
+            height: inherit;
+            background-color: #0c0f1c;
+            border-radius: 50px;
+            border: 0 none;
+            padding: 0 30px;
+            transition: background-color 0.2s linear;
+            font-size: 1.3em;
+        }
 
-.message .message__form-write {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 10px;
-  margin: auto;
-  width: 350px;
-  height: 80px;
-  z-index: 2;
-  
-}
-.message .message__form-write .message__form-write__text {
-  width: 100%;
-  height: inherit;
-  background-color: #0c0f1c;
-  border-radius: 50px;
-  border: 0 none;
-  padding: 0 30px;
-  transition: background-color 0.2s linear;
-    font-size: 1.3em;
-}
-.message .message__form-write .message__form-write__text:focus, .message .message__form-write .message__form-write__text:hover {
-  background-color: black;
-}
-.message .message__form-write .message__form-write__close {
-  position: absolute;
-  color: #fff;
-  background: transparent;
-  border: 0 none;
-  right: 15px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  cursor: pointer;
-  height: inherit;
-}
+        .message .message__form-write .message__form-write__text:focus, .message .message__form-write .message__form-write__text:hover {
+            background-color: black;
+        }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-/* Media query for mobile screens */
-@media (max-width: 768px) {
-  .message {
-    width: 100%; /* Full width on smaller screens */
-    padding: 10px; /* Add padding for better spacing */
-  }
+        .message .message__form-write .message__form-write__close {
+            position: absolute;
+            color: #fff;
+            background: transparent;
+            border: 0 none;
+            right: 15px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            cursor: pointer;
+            height: inherit;
+        }
 
-  .message__form-write__text {
-    font-size: 14px; /* Adjust font size for readability */
-      height: 80px;
-  }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
-  .btn-primary {
-    width: 100%; /* Full width for button */
-    margin-top: 10px; /* Add margin for spacing */
-  }
+        /* Media query for mobile screens */
+        @media (max-width: 768px) {
+            .message {
+                width: 100%; /* Full width on smaller screens */
+                padding: 10px; /* Add padding for better spacing */
+            }
 
-  .message__form-write__close {
-    display: block;
+            .message__form-write__text {
+                font-size: 14px; /* Adjust font size for readability */
+                height: 80px;
+            }
+
+            .btn-primary {
+                width: 100%; /* Full width for button */
+                margin-top: 10px; /* Add margin for spacing */
+            }
+
+            .message__form-write__close {
+                
     position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 20px;
+    color: #fff;
     background: transparent;
-    border: none;
-    color: #ccc;
+    /* border: 10px; */
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     cursor: pointer;
-  }
-}
-      * {
-  -webkit-text-size-adjust: 100%;
-}
-  </style>
+    height: inherit;
+    border-color: #007bff;
+    border-radius: 50px;
+            }
+        }
+
+        * {
+            -webkit-text-size-adjust: 100%;
+        }
+    </style>
 </head>
-<div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
+<body>
+    <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
 
-  <form ng-hide="hide == true" class="message__form-write" ng-submit="addMessage($event)">
-    <input class="message__form-write__text" type="text" style="color: {{ getColor }}" ng-model="message" maxlength=30 placeholder="Say hello to 🌎 world ..." required>
-    <button class="message__form-write__close" type="button" ng-click="hide = true">x</button>
-     
-  </form>
-  
-<div class="message__has-scroll">
-  <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
-    <div ng-click="showMessageAlert(message.message)">
-      {{ message.message.length > 20 ? (message.message | limitTo: 10) + '...' : message.message }}
+        <form ng-hide="hide == true" class="message__form-write" ng-submit="addMessage($event)">
+            <input class="message__form-write__text" type="text" style="color: {{ getColor }}" ng-model="message" maxlength="30" placeholder="Say hello to 🌎 world ..." required>
+            <button class="message__form-write__close" type="button" ng-click="closeAndAddMessage()">enter</button>
+        </form>
+
+        <div class="message__has-scroll">
+            <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
+                <div ng-click="showMessageAlert(message.message)">
+                    {{ message.message.length > 20 ? (message.message | limitTo: 10) + '...' : message.message }}
+                </div>
+            </span>
+        </div>
+
+        <div class="message__total">
+            {{ "We have total " + messages.length + " emotion" }}
+        </div>
     </div>
-  </span>
-</div>
+    <script>
+        const app = angular.module("helloWorld", ["firebase"]);
 
-  <div class="message__total">
-    {{ "We have total "+messages.length+" emotion" }}
-  </div>
-</div>
-  <script>
-   const app = angular.module("helloWorld", ["firebase"]);
+        app.filter("reverse", function () {
+            return function (items) {
+                return items.slice().reverse();
+            };
+        });
 
-app.filter("reverse", function () {
-  return function (items) {
-    return items.slice().reverse();
-  };
-});
+        app.controller("ctrl", function ($scope, $firebaseArray) {
+            const ref = new Firebase(
+                "https://say-hello-to-world-755dc.firebaseio.com/messages"
+            );
 
+            const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+            const getColor = () => {
+                let colors = [
+                    "#f44336",
+                    "#ffc107",
+                    "#4caf50",
+                    "#03a9f4",
+                    "#9c27b0",
+                    "#ffffff",
+                    "#607d8b",
+                    "#e91e63",
+                    "#ff9800",
+                    "#009688"
+                ];
+                return colors[random(0, colors.length)];
+            };
 
-app.controller("ctrl", function ($scope, $firebaseArray) {
-  const ref = new Firebase(
-    "https://say-hello-to-world-755dc.firebaseio.com/messages"
-  );
-  
-  const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const getColor = () => {
-    let colors = [
-      "#f44336",
-      "#ffc107",
-      "#4caf50",
-      "#03a9f4",
-      "#9c27b0",
-      "#ffffff",
-      "#607d8b",
-      "#e91e63",
-      "#ff9800",
-      "#009688"
-    ];
-    return colors[random(0, colors.length)];
-  };
+            $scope.hide = false;
+            $scope.getColor = getColor();
 
-  $scope.hide = false;
-  $scope.getColor = getColor();
+            $scope.messages = $firebaseArray(ref);
 
-  $scope.messages = $firebaseArray(ref);
- $scope.addMessage = (event) => {
-    event.preventDefault();
-    $scope.messages.$add({
-      message: $scope.message,
-      color: $scope.getColor
-    });
-    $scope.message = "";
-    $scope.hide = true;
-    $scope.getColor = getColor();
-  };
+            $scope.addMessage = (event) => {
+                event.preventDefault();
+                $scope.messages.$add({
+                    message: $scope.message,
+                    color: $scope.getColor
+                });
+                $scope.message = "";
+                $scope.getColor = getColor();
+            };
 
+            $scope.closeAndAddMessage = () => {
+                if ($scope.message) {
+                    $scope.messages.$add({
+                        message: $scope.message,
+                        color: $scope.getColor
+                    });
+                    $scope.message = "";
+                    $scope.getColor = getColor();
+                    alert("OK");
+                }
+            };
 
+            $scope.userMessageInput = ""; // Initialize the user input field
 
-  $scope.userMessageInput = ""; // Initialize the user input field
+            $scope.showMessageAlert = function (
+                messageText,
+                timestamp,
+                bgColor,
+                Color
+            ) {
+                const formattedTimestamp = new Date(timestamp).toLocaleString();
+                const alertMessage = `Message: ${messageText}`;
+                alert(alertMessage);
+            };
 
-  $scope.showMessageAlert = function (
-    messageText,
-    timestamp,
-    bgColor,
-    Color
-  ) {
-    const formattedTimestamp = new Date(timestamp).toLocaleString();
-    const alertMessage = `Message: ${messageText}\n\nDate: ${timestamp}`;
-    alert(alertMessage);
-  };
-  $scope.getTruncatedMessage = function (messageText) {
-    const limit = getRandomLength();
-    return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
-  };
-});
-
-  </script>
+            $scope.getTruncatedMessage = function (messageText) {
+                const limit = getRandomLength();
+                return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
+            };
+        });
+    </script>
+</body>
+</html>
