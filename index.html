@@ -116,7 +116,7 @@
         .message .message__form-write .message__form-write__close {     
             position: absolute;
             color: #fff;
-            background: transparent;
+           background-color: #0c0f1c;
             border: 2 solid;
             /* right: 12px; */
             top: 0;
@@ -179,7 +179,7 @@
     <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
 
         <form ng-hide="hide == true" class="message__form-write" ng-submit="addMessage($event)">
-            <input class="message__form-write__text" type="text" style="color: {{ getColor }}" ng-model="message" maxlength="30" placeholder="Say hello to 🌎 world ..." required>
+            <input class="message__form-write__text" type="text" style="color: {{ getColor }}" ng-model="message" maxlength="30" placeholder="Share your emotion 😉 ..." required>
             <button class="message__form-write__close" type="button" ng-click="closeAndAddMessage()">enter</button>
         </form>
 
@@ -239,6 +239,7 @@
                 });
                 $scope.message = "";
                 $scope.getColor = getColor();
+                alert("thanks");
             };
 
             $scope.closeAndAddMessage = () => {
@@ -249,7 +250,7 @@
                     });
                     $scope.message = "";
                     $scope.getColor = getColor();
-                    alert("OK");
+                    alert("thanks");
                 }
             };
 
