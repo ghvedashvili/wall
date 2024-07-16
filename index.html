@@ -232,16 +232,14 @@
     </style>
 </head>
 
-<body>
-<div class="navbar1 fixed-top">
-<a href="#">Home</a>
-<a class="nav-link" href="#" data-target="#aboutModal">{{ "We have total " + messages.length + " emotion" }} Share your emotion :)</a>
-<a href="#">Top emotions</a>
-</div>
+<body ng-app="helloWorld" ng-controller="ctrl">
+    <div class="navbar1 fixed-top">
+        <a href="#">Home</a>
+        <a class="nav-link" href="#" data-target="#aboutModal">{{ "We have total " + messages.length + " emotion" }} Share your emotion :)</a>
+        <a href="#">Top emotions</a>
+    </div>
 
-    
-
-    <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
+    <div ng-cloak class="message">
         <div class="message__has-scroll">
             <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
                 <div ng-click="showMessageAlert(message.message)">
@@ -250,9 +248,7 @@
             </span>
         </div>
 
-        <div class="message__total">
-            {{ "We have total " + messages.length + " emotion" }}
-        </div>
+       
     </div>
     
     <script>
