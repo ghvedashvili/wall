@@ -179,6 +179,30 @@
                 border-color: #007bff;
                 border-radius: 50px;
             }
+
+            .modal-dialog {
+                width: 95%;
+                /* Full width for modal */
+                margin: auto;
+                /* Center the modal */
+            }
+
+            .modal-content {
+                font-size: 14px;
+                /* Adjust font size for readability */
+            }
+
+            .modal-body textarea {
+                font-size: 14px;
+                /* Adjust font size for readability */
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+                /* Full width for buttons */
+                margin-bottom: 10px;
+                /* Add margin for spacing */
+            }
         }
 
         * {
@@ -249,17 +273,16 @@
             {{ "We have total " + messages.length + " emotion" }}
         </div>
     </div>
-
     <script>
         const app = angular.module("helloWorld", ["firebase"]);
 
-        app.filter("reverse", function () {
-            return function (items) {
+        app.filter("reverse", function() {
+            return function(items) {
                 return items.slice().reverse();
             };
         });
 
-        app.controller("ctrl", function ($scope, $firebaseArray) {
+        app.controller("ctrl", function($scope, $firebaseArray) {
             const ref = new Firebase(
                 //"https://say-hello-to-world-755dc.firebaseio.com/messages"
                 "https://cars-9d3b5-default-rtdb.firebaseio.com/"
@@ -323,7 +346,7 @@
                 alert(alertMessage);
             };
 
-            $scope.getTruncatedMessage = function (messageText) {
+            $scope.getTruncatedMessage = function(messageText) {
                 const limit = getRandomLength();
                 return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
             };
