@@ -180,39 +180,17 @@
                 border-radius: 50px;
             }
 
-            .modal-dialog {
-                width: 95%;
-                /* Full width for modal */
-                margin: auto;
-                /* Center the modal */
-            }
-
-            .modal-content {
-                font-size: 14px;
-                /* Adjust font size for readability */
-            }
-
-            .modal-body textarea {
-                font-size: 14px;
-                /* Adjust font size for readability */
-            }
-
-            .modal-footer .btn {
-                width: 100%;
-                /* Full width for buttons */
-                margin-bottom: 10px;
-                /* Add margin for spacing */
-            }
+            
 
             .navbar-nav .nav-link {
-                font-size: 4rem;
+                font-size: 1.5rem;
                 /* Increase font size for better readability */
                 padding: 10px 15px;
                 /* Increase padding for larger clickable area */
             }
 
             .navbar-brand {
-                font-size: 3rem;
+                font-size: 2rem;
                 /* Increase font size for the brand name */
             }
         }
@@ -224,14 +202,11 @@
 </head>
 
 <body>
-    <!-- Top Menu -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">BrandName</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
@@ -242,8 +217,9 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-        </div>
-    </nav>
+
+</nav>
+    
 
     <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
         <div class="message__has-scroll">
