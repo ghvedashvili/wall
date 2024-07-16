@@ -287,7 +287,7 @@
     <div ng-cloak class="message">
         <div class="message__has-scroll">
             <span ng-repeat="message in messages | reverse" class="message__item" style="animation-delay: {{0.005 * $index}}s; color: {{ message.color }}">
-                <div ng-click="showMessageAlert(message.message)">
+                <div ng-click="showMessageAlert(message.message, $index)">
                     {{ message.message.length > 20 ? (message.message | limitTo: 10) + '...' : message.message }}
                 </div>
             </span>
@@ -400,8 +400,10 @@
 
             $scope.userMessageInput = ""; // Initialize the user input field
 
-            $scope.showMessageAlert = function (messageText) {
-                const alertMessage = `Message: ${messageText}`;
+            $scope.showMessageAlert = function (messageText, messageIndex) {
+                // messageIndex is the index of the message in the array, starting from 1
+                const messageNumber = messageIndex + 1; // Assuming the index is zero-based
+                const alertMessage = `Message N${messageNumber}\n${messageText}`;
                 alert(alertMessage);
             };
 
