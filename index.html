@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Wall</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>wall</title>
-<style>
-        @import url("https://fonts.googleapis.com/css?family=Caveat+Brush");
+    <style>
+     @import url("https://fonts.googleapis.com/css?family=Caveat+Brush");
 
         .message .message__form-write .message__form-write__close,
         .message .message__form-write .message__form-write__text,
@@ -217,13 +219,68 @@
         .navbar1 a:hover {
             color: #28a745;
         }
+        body {
+            background-color: #191e38;
+            color: white;
+            margin: 0;
+        }
+
+        .navbar1 {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar1 a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 35px;
+        }
+
+        .navbar1 a:hover {
+            color: #28a745;
+        }
+
+        .message {
+            padding-top: 60px; /* Adjust padding to account for the fixed navbar */
+        }
+
+        .message__item {
+            padding: 2px;
+            margin: 0 2px;
+            cursor: default;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeIn 1s forwards;
+        }
+
+        .message__item div {
+            background-color: transparent;
+            transition: all 0.4s ease-in-out 0.2s;
+            padding: 0px 8px;
+            border-radius: 50px;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 
 <body ng-app="helloWorld" ng-controller="ctrl">
-    <div class="navbar1 fixed-top">
+    <div class="navbar1">
         <a href="#" ng-click="showAboutModal()">{{ "We have total " + messages.length + " emotion" }}</a>
-        <a class="nav-link" href="#" id="shareEmotionLink" data-target="#aboutModal" style="float: right;">Share your emotion :)</a>
+        <a class="nav-link" href="#" id="shareEmotionLink" data-target="#aboutSiteModal" style="float: right;">Share your emotion :)</a>
     </div>
 
     <div ng-cloak class="message">
@@ -238,15 +295,15 @@
 
     <!-- About Site Modal -->
     <div class="modal fade" id="aboutSiteModal" tabindex="-1" role="dialog" aria-labelledby="aboutSiteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content text-secondary">
                 <div class="modal-header">
                     <h5 class="modal-title" id="aboutSiteModalLabel">About Our Site</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body ">
                     <p>Welcome to our site where you can share your emotions and connect with others!</p>
                     <button type="button" class="btn btn-primary" ng-click="showSelectedMessagesModal()">View Top Emotions</button>
                     <button type="button" class="btn btn-secondary" ng-click="triggerShareEmotion()">Share Your Emotion</button>
@@ -256,9 +313,9 @@
     </div>
 
     <!-- Modal for showing selected messages -->
-    <div class="modal fade" id="selectedMessagesModal" tabindex="-1" role="dialog" aria-labelledby="selectedMessagesModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+    <div class="modal fade " id="selectedMessagesModal" tabindex="-1" role="dialog" aria-labelledby="selectedMessagesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content text-secondary">
                 <div class="modal-header">
                     <h5 class="modal-title" id="selectedMessagesModalLabel">Selected Messages</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -342,20 +399,9 @@
 
             $scope.userMessageInput = ""; // Initialize the user input field
 
-            $scope.showMessageAlert = function (
-                messageText,
-                timestamp,
-                bgColor,
-                Color
-            ) {
-                const formattedTimestamp = new Date(timestamp).toLocaleString();
+            $scope.showMessageAlert = function (messageText) {
                 const alertMessage = `Message: ${messageText}`;
                 alert(alertMessage);
-            };
-
-            $scope.getTruncatedMessage = function (messageText) {
-                const limit = getRandomLength();
-                return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
             };
 
             $scope.showAboutModal = function () {
@@ -381,7 +427,7 @@
             };
         });
 
-        document.querySelector('.nav-link[data-target="#aboutModal"]').addEventListener('click', function () {
+        document.querySelector('.nav-link[data-target="#aboutSiteModal"]').addEventListener('click', function () {
             var aboutMessage = prompt("Write your message here...");
             if (aboutMessage !== null && aboutMessage.trim() !== "") {
                 var scope = angular.element(document.querySelector('[ng-controller="ctrl"]')).scope();
