@@ -145,10 +145,6 @@
 
         /* Media query for mobile screens */
         @media (max-width: 768px) {
-        .navbar1 {
-
-  font-size: 30px;
-}
             .message {
                 width: 100%;
                 /* Full width on smaller screens */
@@ -186,8 +182,8 @@
 
             
 
-            .navbar-nav {
-                font-size: 10rem;
+            .navbar-nav .nav-link {
+                font-size: 1.5rem;
                 /* Increase font size for better readability */
                 padding: 10px 15px;
                 /* Increase padding for larger clickable area */
@@ -202,58 +198,38 @@
         * {
             -webkit-text-size-adjust: 100%;
         }
-        .topnav {
+        .navbar1 {
   overflow: hidden;
   background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.topnav a {
+.navbar1 a {
   float: left;
   display: block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 30px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
+.navbar1 a:hover {
+  background: #ddd;
   color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-
-
-@media screen and (max-width: 600px) {
-
-  .topnav a {
-    
-    font-size:55px;
-  }
 }
     </style>
 </head>
 
 <body>
-
-<div class="topnav fixed-top" id="myTopnav">
+<div class="navbar1 fixed-top">
+  <a href="#home">Home</a>
  <a class="nav-link" href="#" data-target="#aboutModal">About</a>
-  <a href="#news">News</a>
   <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
 </div>
+
     
 
     <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
