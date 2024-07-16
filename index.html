@@ -145,6 +145,10 @@
 
         /* Media query for mobile screens */
         @media (max-width: 768px) {
+        .navbar1 a {
+
+  font-size: 30px;
+}
             .message {
                 width: 100%;
                 /* Full width on smaller screens */
@@ -182,8 +186,8 @@
 
             
 
-            .navbar-nav {
-                font-size: 4rem !important;
+            .navbar-nav .nav-link {
+                font-size: 1.5rem;
                 /* Increase font size for better readability */
                 padding: 10px 15px;
                 /* Increase padding for larger clickable area */
@@ -198,27 +202,38 @@
         * {
             -webkit-text-size-adjust: 100%;
         }
+        .navbar1 {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar1 a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar1 a:hover {
+  background: #ddd;
+  color: black;
+}
     </style>
 </head>
 
 <body>
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm bg-light fixed-top">
+<div class="navbar1 fixed-top">
+  <a href="#home">Home</a>
+ <a class="nav-link" href="#" data-target="#aboutModal">About</a>
+  <a href="#contact">Contact</a>
+</div>
 
-  <!-- Links -->
-  <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-target="#aboutModal">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-
-</nav>
     
 
     <div ng-cloak class="message" ng-app="helloWorld" ng-controller="ctrl">
