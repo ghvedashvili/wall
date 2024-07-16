@@ -91,7 +91,7 @@
             transition: all 0.4s ease-in-out 0.2s;
 /*             padding: 0px 8px;
             border-radius: 50px; */
-            font-size:9px;
+/*             font-size:9px; */
         }
 
         .message .message__form-write {
@@ -158,7 +158,8 @@
 
             .message {
                 width: 100%;
-                padding: 10px;
+/*                 padding: 10px; */
+                  font-size: 9px;
             }
 
             .message__form-write__text {
@@ -402,7 +403,7 @@
 
             $scope.showMessageAlert = function (messageText, messageIndex) {
                 // messageIndex is the index of the message in the array, starting from 1
-                const messageNumber = messageIndex + 1; // Assuming the index is zero-based
+                const messageNumber = $scope.messages.length-messageIndex; // Assuming the index is zero-based
                 const alertMessage = `Message N${messageNumber}\n${messageText}`;
                 alert(alertMessage);
             };
