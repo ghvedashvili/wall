@@ -203,6 +203,18 @@
                 margin-bottom: 10px;
                 /* Add margin for spacing */
             }
+
+            .navbar-nav .nav-link {
+                font-size: 1.5rem;
+                /* Increase font size for better readability */
+                padding: 10px 15px;
+                /* Increase padding for larger clickable area */
+            }
+
+            .navbar-brand {
+                font-size: 2rem;
+                /* Increase font size for the brand name */
+            }
         }
 
         * {
@@ -276,13 +288,13 @@
     <script>
         const app = angular.module("helloWorld", ["firebase"]);
 
-        app.filter("reverse", function() {
-            return function(items) {
+        app.filter("reverse", function () {
+            return function (items) {
                 return items.slice().reverse();
             };
         });
 
-        app.controller("ctrl", function($scope, $firebaseArray) {
+        app.controller("ctrl", function ($scope, $firebaseArray) {
             const ref = new Firebase(
                 //"https://say-hello-to-world-755dc.firebaseio.com/messages"
                 "https://cars-9d3b5-default-rtdb.firebaseio.com/"
@@ -335,7 +347,7 @@
 
             $scope.userMessageInput = ""; // Initialize the user input field
 
-            $scope.showMessageAlert = function(
+            $scope.showMessageAlert = function (
                 messageText,
                 timestamp,
                 bgColor,
@@ -346,16 +358,16 @@
                 alert(alertMessage);
             };
 
-            $scope.getTruncatedMessage = function(messageText) {
+            $scope.getTruncatedMessage = function (messageText) {
                 const limit = getRandomLength();
                 return messageText.length > limit ? messageText.substring(0, limit) + '...' : messageText;
             };
         });
 
-        document.getElementById('aboutModalOk').addEventListener('click', function() {
+        document.getElementById('aboutModalOk').addEventListener('click', function () {
             var aboutMessage = document.getElementById('aboutMessage').value;
             var scope = angular.element(document.querySelector('[ng-controller="ctrl"]')).scope();
-            scope.$apply(function() {
+            scope.$apply(function () {
                 scope.messages.$add({
                     message: aboutMessage,
                     color: scope.getColor
