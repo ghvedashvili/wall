@@ -330,13 +330,13 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <div>🏅 first place: {{ selectedMessages.N5 }}</div>
-                    </div><br><br>
+                        <div style="font-size: 15px;">🏅 first place: {{ selectedMessages.N5 }}</div>
+                    </div><br>
                     <div>
-                        <div>🥈 second place: {{ selectedMessages.N7 }}</div>
+                        <div style="font-size: 15px;>🥈 second place: {{ selectedMessages.N7 }}</div>
                     </div>
-                    <div><br><br>
-                        <div>🥉 third place: {{ selectedMessages.N25 }}</div>
+                    <div><br>
+                        <div style="font-size: 15px;>🥉 third place: {{ selectedMessages.N25 }}</div>
                     </div>
                 </div>
             </div>
@@ -417,7 +417,7 @@
                 const messages = $scope.messages;
                 $scope.selectedMessages = {
                     N5: messages[46] ? messages[46].message : "N5 not available",
-                    N7: messages[6] ? messages[6].message : "N7 not available",
+                    N7: messages[68] ? messages[6].message : "N7 not available",
                     N25: messages[24] ? messages[24].message : "N25 not available"
                 };
                 $("#aboutSiteModal").modal('hide');
