@@ -296,12 +296,11 @@
     </div>
 
     <!-- About Site Modal -->
-    <div class="modal fade" id="aboutSiteModal" tabindex="-1" role="dialog" aria-labelledby="aboutSiteModalLabel" aria-hidden="true" style="background-color: #191e38;
-">
+    <div class="modal fade" id="aboutSiteModal" tabindex="-1" role="dialog" aria-labelledby="aboutSiteModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content text-secondary">
+            <div class="modal-content text-secondary" style="background-color: #191e38;">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="aboutSiteModalLabel">About Our Site</h5>
+                    <h5 class="modal-title" id="aboutSiteModalLabel">About us</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -320,10 +319,9 @@
     </div>
 
     <!-- Modal for showing selected messages -->
-    <div class="modal fade " id="selectedMessagesModal" tabindex="-1" role="dialog" aria-labelledby="selectedMessagesModalLabel" aria-hidden="true" style="background-color: #191e38;
-">
+    <div class="modal fade " id="selectedMessagesModal" tabindex="-1" role="dialog" aria-labelledby="selectedMessagesModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content text-secondary">
+            <div class="modal-content text-secondary" style="background-color: #191e38;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="selectedMessagesModalLabel">Selected Messages</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -331,15 +329,15 @@
                     </button>
                 </div>
                 <div class="modal-body" style="font-size: 15px; text-align: center;">
-                    <div>
+                    <div class="text-success">
                         <div>🏅 first place:</div>
                          <p> {{ selectedMessages.N5 }}</p>
                     </div>
-                    <div>
+                    <div class="text-secondary">
                         <div>🥈 second place:</div>
                         <p> {{ selectedMessages.N7 }}</p>
                     </div>
-                    <div>
+                    <div class="text-warning">
                         <div>🥉 third place:</div>
                         <p> {{ selectedMessages.N25 }}</p>
                     </div>
